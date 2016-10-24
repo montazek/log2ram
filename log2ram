@@ -19,6 +19,7 @@ case "$1" in
       ;;
 
   stop)
+      mount -o remount,rw $HDD_LOG
       if [ "$USE_RSYNC" = true ]; then
           rsync -aXWv --delete --links $RAM_LOG $HDD_LOG
       else
@@ -29,6 +30,7 @@ case "$1" in
       ;;
 
   write)
+      mount -o remount,rw $HDD_LOG
       if [ "$USE_RSYNC" = true ]; then
           rsync -aXWv --delete --links $RAM_LOG $HDD_LOG
       else
